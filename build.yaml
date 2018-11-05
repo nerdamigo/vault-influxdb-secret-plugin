@@ -1,1 +1,10 @@
----
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+variables:
+  imageName: 'pipelines-go:$(build.buildId)'
+
+steps:
+- script: docker build -f ./test/integration/Dockerfile -t $(imageName) ./src
+  displayName: 'docker build'
